@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 
+@SuppressWarnings("serial")
 public class VentanaAdmin extends JFrame {
 
 	private JPanel contentPane;
