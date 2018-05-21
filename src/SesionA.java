@@ -9,13 +9,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JPasswordField;
 
 @SuppressWarnings("serial")
 public class SesionA extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField User;
-	private JTextField pass;
+	private JPasswordField pass;
 
 	public SesionA() {
 		boolean sesion = true;
@@ -28,7 +29,7 @@ public class SesionA extends JFrame {
 
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[][][][][][][][grow]", "[][][][][]"));
+		panel.setLayout(new MigLayout("", "[][][][][grow][][][grow]", "[][][][][]"));
 
 		JLabel lblIniciarSesion = new JLabel("Iniciar Sesion");
 		panel.add(lblIniciarSesion, "cell 1 0");
@@ -43,10 +44,6 @@ public class SesionA extends JFrame {
 		JLabel lblPass = new JLabel("Contrase\u00F1a:");
 		panel.add(lblPass, "cell 1 3 2 1");
 
-		pass = new JTextField();
-		panel.add(pass, "cell 4 3,growx");
-		pass.setColumns(10);
-
 		JButton InitSesion = new JButton("Iniciar Sesion");
 		InitSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent c) {
@@ -58,6 +55,9 @@ public class SesionA extends JFrame {
 				}
 			}
 		});
+		
+		pass = new JPasswordField();
+		panel.add(pass, "cell 4 3,growx");
 		panel.add(InitSesion, "cell 4 4");
 	}
 

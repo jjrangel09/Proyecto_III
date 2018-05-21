@@ -12,13 +12,14 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
 @SuppressWarnings("serial")
 public class SesionU extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField cajaUser;
-	private JTextField cajaPass;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -59,8 +60,7 @@ public class SesionU extends JFrame {
 		cajaUser = new JTextField();
 		cajaUser.setColumns(10);
 		
-		cajaPass = new JTextField();
-		cajaPass.setColumns(10);
+		passwordField = new JPasswordField();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -79,13 +79,13 @@ public class SesionU extends JFrame {
 							.addGap(46)
 							.addComponent(LabelUser)))
 					.addPreferredGap(ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 							.addComponent(LaberPass)
 							.addGap(69))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(cajaPass, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
-							.addGap(31))))
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE)
+							.addGap(44))))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -97,7 +97,7 @@ public class SesionU extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(cajaUser, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(cajaPass, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(32)
 					.addComponent(botonIngre)
 					.addGap(18)

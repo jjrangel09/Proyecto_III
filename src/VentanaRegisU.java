@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JPasswordField;
 
 public class VentanaRegisU extends JFrame {
 
@@ -23,7 +24,7 @@ public class VentanaRegisU extends JFrame {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
-	private JTextField cajaContra;
+	private JPasswordField cajaContra;
 
 	/**
 	 * Launch the application.
@@ -76,8 +77,7 @@ public class VentanaRegisU extends JFrame {
 		
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a");
 		
-		cajaContra = new JTextField();
-		cajaContra.setColumns(10);
+		cajaContra = new JPasswordField();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -94,14 +94,14 @@ public class VentanaRegisU extends JFrame {
 								.addComponent(lblTelefono)
 								.addComponent(lblEdad))
 							.addGap(33)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(cajaContra, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(textField_5)
+								.addComponent(textField_4)
+								.addComponent(textField_3)
+								.addComponent(textField_2)
+								.addComponent(textField_1)
+								.addComponent(textField)
+								.addComponent(cajaContra)))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(55)
 							.addComponent(lblRegistroDeUsuario))

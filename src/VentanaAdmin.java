@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.Color;
+import javax.swing.JPasswordField;
 
 @SuppressWarnings("serial")
 public class VentanaAdmin extends JFrame {
@@ -31,6 +32,7 @@ public class VentanaAdmin extends JFrame {
 	private JTable table_2;
 	private JTextField cajaCompras;
 	private JTextField textField_7;
+	private JPasswordField passwordField;
 
 	/**
 	 * Create the frame.
@@ -109,7 +111,7 @@ public class VentanaAdmin extends JFrame {
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
 		
-		JLabel lblUsuario = new JLabel("Usuario:");
+		JLabel lblUsuario = new JLabel("Nombre usuario:");
 		
 		JLabel lblDocumento = new JLabel("Documento:");
 		
@@ -134,38 +136,49 @@ public class VentanaAdmin extends JFrame {
 		JButton btnBorrarUsuario = new JButton("Borrar Usuario");
 		btnBorrarUsuario.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnBorrarUsuario.setForeground(Color.RED);
+		
+		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
+		
+		passwordField = new JPasswordField();
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_1.createSequentialGroup()
-					.addGap(95)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_1.createSequentialGroup()
-							.addComponent(lblNombreDeUsuario)
-							.addGap(18)
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnBuscar))
-						.addGroup(gl_panel_1.createSequentialGroup()
+							.addGap(95)
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblDocumento)
-								.addComponent(lblEdad)
-								.addComponent(lblUsuario)
-								.addComponent(lblNombre)
-								.addComponent(lblApellido)
-								.addComponent(lblTelefono))
-							.addGap(18)
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-								.addComponent(textField_5, GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-								.addComponent(textField_4, GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-								.addComponent(textField_1, 218, 230, Short.MAX_VALUE)
-								.addComponent(textField_2, 218, 230, Short.MAX_VALUE)
-								.addComponent(textField_6, GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-								.addComponent(textField_3, GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-								.addComponent(btnActualizarUsuario))))
-					.addGap(50)
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addComponent(lblNombreDeUsuario)
+									.addGap(18)
+									.addComponent(textField, GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+									.addGap(18)
+									.addComponent(btnBuscar))
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+										.addComponent(lblNombre)
+										.addComponent(lblApellido)
+										.addComponent(lblTelefono)
+										.addComponent(lblEdad)
+										.addComponent(lblContrasea)
+										.addComponent(lblUsuario)
+										.addComponent(lblDocumento))
+									.addGap(28)
+									.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+										.addComponent(passwordField, GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+										.addComponent(textField_1, 218, 218, Short.MAX_VALUE)
+										.addComponent(textField_2, 218, 218, Short.MAX_VALUE)
+										.addComponent(textField_6, GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+										.addComponent(textField_5, GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+										.addComponent(textField_4, GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+										.addComponent(textField_3, GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))))
+							.addGap(52))
+						.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(btnActualizarUsuario)
+							.addGap(95)))
 					.addComponent(btnBorrarUsuario)
-					.addGap(217))
+					.addGap(209))
 		);
 		gl_panel_1.setVerticalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -185,28 +198,29 @@ public class VentanaAdmin extends JFrame {
 						.addComponent(lblApellido))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblUsuario)
-						.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblUsuario))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblDocumento)
-						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGap(18)
-							.addComponent(lblEdad))
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(lblContrasea)
+						.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(14)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblDocumento))
+					.addGap(18)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblEdad))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
 						.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblTelefono))
-					.addGap(48)
+					.addGap(53)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnActualizarUsuario)
-						.addComponent(btnBorrarUsuario))
-					.addContainerGap(111, Short.MAX_VALUE))
+						.addComponent(btnBorrarUsuario)
+						.addComponent(btnActualizarUsuario))
+					.addContainerGap(91, Short.MAX_VALUE))
 		);
 		panel_1.setLayout(gl_panel_1);
 		
