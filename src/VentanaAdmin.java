@@ -28,6 +28,9 @@ public class VentanaAdmin extends JFrame {
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTextField textField_6;
+	private JTable table_2;
+	private JTextField cajaCompras;
+	private JTextField textField_7;
 
 	/**
 	 * Create the frame.
@@ -209,6 +212,86 @@ public class VentanaAdmin extends JFrame {
 		
 		JPanel panel_3 = new JPanel();
 		tabbedPane.addTab("Reportes", null, panel_3, null);
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		
+		cajaCompras = new JTextField();
+		cajaCompras.setColumns(10);
+		
+		JButton btnConsultarCom = new JButton("Consultar compras");
+		
+		JButton botonAlbum = new JButton("Album");
+		
+		JButton botonArtista = new JButton("Artista");
+		
+		JButton botonCanciones = new JButton("Canciones");
+		
+		JLabel lblIngresarFecha = new JLabel("Ingresar fecha inicial (DD-MM-YYYY)");
+		
+		JLabel lblNewLabel_1 = new JLabel("Ingresar fecha final (DD-MM-YYYY)");
+		
+		textField_7 = new JTextField();
+		textField_7.setColumns(10);
+		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
+		gl_panel_3.setHorizontalGroup(
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_3.createSequentialGroup()
+					.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_3.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(scrollPane_2, GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE))
+						.addGroup(gl_panel_3.createSequentialGroup()
+							.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel_3.createSequentialGroup()
+									.addGap(24)
+									.addComponent(lblIngresarFecha))
+								.addGroup(gl_panel_3.createSequentialGroup()
+									.addGap(47)
+									.addComponent(cajaCompras, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE)))
+							.addGap(45)
+							.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+								.addGroup(Alignment.TRAILING, gl_panel_3.createSequentialGroup()
+									.addGap(10)
+									.addComponent(textField_7)
+									.addGap(154)
+									.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING, false)
+										.addComponent(botonAlbum, GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+										.addComponent(botonArtista, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(botonCanciones, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(btnConsultarCom, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+									.addPreferredGap(ComponentPlacement.RELATED, 95, Short.MAX_VALUE))
+								.addComponent(lblNewLabel_1))))
+					.addContainerGap())
+		);
+		gl_panel_3.setVerticalGroup(
+			gl_panel_3.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_3.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(scrollPane_2, GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
+					.addGap(18)
+					.addGroup(gl_panel_3.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNewLabel_1)
+						.addComponent(lblIngresarFecha))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_panel_3.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnConsultarCom)
+						.addComponent(cajaCompras, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textField_7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addComponent(botonAlbum)
+					.addGap(18)
+					.addComponent(botonArtista)
+					.addGap(18)
+					.addComponent(botonCanciones)
+					.addContainerGap())
+		);
+		
+		table_2 = new JTable();
+		table_2.setModel(new DefaultTableModel(new Object[][] {},
+				new String[] {"Fecha inicial", "Fecha final", "Nombre", "Canciones compradas"}));
+		
+		scrollPane_2.setViewportView(table_2);
+		panel_3.setLayout(gl_panel_3);
 		
 		JPanel panel_2 = new JPanel();
 		tabbedPane.addTab("Gestionar Musica", null, panel_2, null);
