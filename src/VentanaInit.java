@@ -46,7 +46,9 @@ public class VentanaInit extends JFrame {
 		JButton btnAsignacionDePuntajes = new JButton("Usuarios");
 		btnAsignacionDePuntajes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent c) {
-				
+				SesionU iVentanaU = new SesionU();
+				iVentanaU.setVisible(true);
+				iVentanaU.setLocationRelativeTo(null);
 			}
 		});
 
