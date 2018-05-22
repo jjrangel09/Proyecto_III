@@ -76,41 +76,45 @@ public class VentanaUsu extends JFrame {
 				}
 			}
 		});
+		
+		JButton btnActualizar = new JButton("Actualizar");
+		btnActualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				limpiarTabla(1);
+				llenarTabla1();
+			}
+		});
 		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel.createSequentialGroup().addContainerGap().addComponent(scrollPane,
-										GroupLayout.DEFAULT_SIZE, 738, Short.MAX_VALUE))
-								.addGroup(gl_panel.createSequentialGroup().addGap(337).addComponent(btnNewButton,
-										GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)))
-						.addContainerGap()));
-		gl_panel.setVerticalGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup().addContainerGap()
-						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE).addGap(11)
-						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap()));
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 803, Short.MAX_VALUE))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(180)
+							.addComponent(btnActualizar, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
+							.addGap(42)
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap())
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+					.addGap(11)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(btnActualizar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE))
+					.addContainerGap())
+		);
 
 		table = new JTable();
 		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Imagen", "Nombre Artista", "Album",
 				"Cancion", "Genero", "Duracion", "Precio", "Calidad", "Tamaño(MB)" }));
-		DefaultTableModel model_1 = (DefaultTableModel) table.getModel();
-		try {
-			String query = "SELECT * FROM canciones;";
-			PreparedStatement sentenciaP = database.open().prepareStatement(query);
-			ResultSet resultado = sentenciaP.executeQuery();
-
-			while (resultado.next()) {
-				model_1.addRow(new Object[] { null, resultado.getString("artista"), resultado.getString("album"),
-						resultado.getString("nombre"), resultado.getString("genero"), resultado.getString("duracion"),
-						resultado.getString("precio"), resultado.getString("calidad"), resultado.getString("tamaño") });
-			}
-
-			sentenciaP.close();
-			database.close();
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		}
+		
 		scrollPane.setViewportView(table);
 		panel.setLayout(gl_panel);
 
@@ -270,5 +274,36 @@ public class VentanaUsu extends JFrame {
 					.addComponent(tabbedPane, GroupLayout.PREFERRED_SIZE, 327, GroupLayout.PREFERRED_SIZE))
 		);
 		contentPane.setLayout(gl_contentPane);
+	}
+	
+	public void limpiarTabla(int a) {
+		DefaultTableModel tb = (DefaultTableModel) table.getModel();
+		int f = table.getRowCount()-1;
+		switch(a) {
+			case 1:
+				for(int i = f; i >=0; i--) {
+					tb.removeRow(tb.getRowCount()-1);
+				}
+		}
+	}
+	
+	public void llenarTabla1() {
+		DefaultTableModel model_1 = (DefaultTableModel) table.getModel();
+		try {
+			String query = "SELECT * FROM canciones;";
+			PreparedStatement sentenciaP = database.open().prepareStatement(query);
+			ResultSet resultado = sentenciaP.executeQuery();
+
+			while (resultado.next()) {
+				model_1.addRow(new Object[] { null, resultado.getString("artista"), resultado.getString("album"),
+						resultado.getString("nombre"), resultado.getString("genero"), resultado.getString("duracion"),
+						resultado.getString("precio"), resultado.getString("calidad"), resultado.getString("tamaño") });
+			}
+
+			sentenciaP.close();
+			database.close();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 }
