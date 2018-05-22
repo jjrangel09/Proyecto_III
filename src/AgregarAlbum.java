@@ -20,9 +20,16 @@ import javax.swing.JComboBox;
 public class AgregarAlbum extends JFrame {
 	private static DBManager database = new DBManager();
 	private JPanel contentPane;
+<<<<<<< HEAD
 	private JTextField nombreA;
 	private JTextField genero;
 	private JTextField precio;
+=======
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+>>>>>>> master
 
 	/**
 	 * Launch the application.
@@ -34,7 +41,11 @@ public class AgregarAlbum extends JFrame {
 	@SuppressWarnings("unchecked")
 	public AgregarAlbum() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+<<<<<<< HEAD
 		setBounds(100, 100, 287, 285);
+=======
+		setBounds(100, 100, 287, 299);
+>>>>>>> master
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -76,6 +87,7 @@ public class AgregarAlbum extends JFrame {
 		}
 
 		JButton btnAgregar = new JButton("Agregar");
+<<<<<<< HEAD
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -139,6 +151,79 @@ public class AgregarAlbum extends JFrame {
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(lblPrecio).addComponent(
 						precio, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 				.addPreferredGap(ComponentPlacement.RELATED, 22, Short.MAX_VALUE).addComponent(btnAgregar).addGap(22)));
+=======
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		
+		JLabel lblPrecio = new JLabel("Precio");
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(67)
+					.addComponent(lblNewLabel)
+					.addContainerGap(124, Short.MAX_VALUE))
+				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+					.addGap(83)
+					.addComponent(btnAgregar)
+					.addContainerGap(107, Short.MAX_VALUE))
+				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+					.addGap(21)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblPrecio)
+							.addPreferredGap(ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+							.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblNewLabel_3)
+							.addPreferredGap(ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+							.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblNewLabel_2)
+							.addPreferredGap(ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblNewLabel_1)
+							.addPreferredGap(ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+							.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addGap(40))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblNewLabel)
+					.addGap(23)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNewLabel_1)
+						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNewLabel_2)
+						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel_3))
+					.addGap(18)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblPrecio)
+						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+					.addComponent(btnAgregar)
+					.addGap(27))
+		);
+>>>>>>> master
 		contentPane.setLayout(gl_contentPane);
 	}
 }

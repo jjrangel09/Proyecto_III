@@ -17,7 +17,10 @@ import java.sql.SQLException;
 
 @SuppressWarnings("serial")
 public class VentanaRegisU extends JFrame {
-	 private static DBManager database = new DBManager();
+	
+	
+	
+	private static DBManager database = new DBManager();
 	private JPanel contentPane;
 	private JTextField cajaNombre;
 	private JTextField cajaApel;

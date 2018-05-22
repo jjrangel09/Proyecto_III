@@ -15,7 +15,11 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 @SuppressWarnings("serial")
 public class AgregarArtista extends JFrame {
+<<<<<<< HEAD
 	private static DBManager database = new DBManager();
+=======
+	
+>>>>>>> master
 	private JPanel contentPane;
 	private JTextField textField;
 	/**
