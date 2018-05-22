@@ -135,78 +135,24 @@ public class VentanaUsu extends JFrame {
 		JButton botonCancion = new JButton("Cancion");
 		botonCancion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent c) {
-				try {
-		            String query = "SELECT * FROM canciones WHERE nombre = ?;";
-		            PreparedStatement sentenciaP = database.open().prepareStatement(query);
-		            sentenciaP.setString(1, CajaBuscar.getText());
-
-		            ResultSet resultado = sentenciaP.executeQuery();
-
-		            while (resultado.next()) {
-		            	
-		            	model_2.addRow(new Object[] { null, resultado.getString("artista"), resultado.getString("album"),
-								resultado.getString("nombre"), resultado.getString("genero"), resultado.getString("duracion"),
-								resultado.getString("precio"), resultado.getString("calidad"), resultado.getString("tamaño") });
-		            }
-		            
-		            sentenciaP.close();
-		            database.close();
-		            
-		        } catch (SQLException e) {
-		            System.out.println(e.getMessage());
-		        }
-			}
+				limpiarTabla(2);
+				llenarTabla4C();
+							}
 		});
 		
 		JButton BotonArtista = new JButton("Artista");
 		BotonArtista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent c) {
-				try {
-		            String query = "SELECT * FROM canciones WHERE artista = ?;";
-		            PreparedStatement sentenciaP = database.open().prepareStatement(query);
-		            sentenciaP.setString(1, CajaBuscar.getText());
-
-		            ResultSet resultado = sentenciaP.executeQuery();
-
-		            while (resultado.next()) {
-		            	
-		            	model_2.addRow(new Object[] { null, resultado.getString("artista"), resultado.getString("album"),
-								resultado.getString("nombre"), resultado.getString("genero"), resultado.getString("duracion"),
-								resultado.getString("precio"), resultado.getString("calidad"), resultado.getString("tamaño") });
-		            }
-		            
-		            sentenciaP.close();
-		            database.close();
-		            
-		        } catch (SQLException e) {
-		            System.out.println(e.getMessage());
-		        }
-			}
+				limpiarTabla(2);
+				llenarTabla3A();
+							}
 		});
 
 		JButton botonDisco = new JButton("Album");
 		botonDisco.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent c) {
-				try {
-		            String query = "SELECT * FROM canciones WHERE album = ?;";
-		            PreparedStatement sentenciaP = database.open().prepareStatement(query);
-		            sentenciaP.setString(1, CajaBuscar.getText());
-
-		            ResultSet resultado = sentenciaP.executeQuery();
-
-		            while (resultado.next()) {
-		            	
-		            	model_2.addRow(new Object[] { null, resultado.getString("artista"), resultado.getString("album"),
-								resultado.getString("nombre"), resultado.getString("genero"), resultado.getString("duracion"),
-								resultado.getString("precio"), resultado.getString("calidad"), resultado.getString("tamaño") });
-		            }
-		            
-		            sentenciaP.close();
-		            database.close();
-		            
-		        } catch (SQLException e) {
-		            System.out.println(e.getMessage());
-		        }
+				limpiarTabla(2);
+				llenarTabla2A();
 			}
 		});
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
@@ -278,12 +224,18 @@ public class VentanaUsu extends JFrame {
 	
 	public void limpiarTabla(int a) {
 		DefaultTableModel tb = (DefaultTableModel) table.getModel();
+		DefaultTableModel tb1 = (DefaultTableModel) table_1.getModel();
 		int f = table.getRowCount()-1;
+		int g = table_1.getRowCount()-1;
 		switch(a) {
 			case 1:
 				for(int i = f; i >=0; i--) {
 					tb.removeRow(tb.getRowCount()-1);
 				}
+			case 2:
+				for(int j = g; j >=0; j--) {
+					tb1.removeRow(tb1.getRowCount()-1);
+				}	
 		}
 	}
 	
@@ -305,5 +257,79 @@ public class VentanaUsu extends JFrame {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	public void llenarTabla2A() {
+		DefaultTableModel model_2 = (DefaultTableModel) table_1.getModel();
+		try {
+            String query = "SELECT * FROM canciones WHERE album = ?;";
+            PreparedStatement sentenciaP = database.open().prepareStatement(query);
+            sentenciaP.setString(1, CajaBuscar.getText());
+
+            ResultSet resultado = sentenciaP.executeQuery();
+            while (resultado.next()) {
+            	
+            	
+            	model_2.addRow(new Object[] { null, resultado.getString("artista"), resultado.getString("album"),
+						resultado.getString("nombre"), resultado.getString("genero"), resultado.getString("duracion"),
+						resultado.getString("precio"), resultado.getString("calidad"), resultado.getString("tamaño") });
+            }
+            
+            sentenciaP.close();
+            database.close();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+	}
+	
+	public void llenarTabla3A() {
+		DefaultTableModel model_3 = (DefaultTableModel) table_1.getModel();
+		try {
+            String query = "SELECT * FROM canciones WHERE artista = ?;";
+            PreparedStatement sentenciaP = database.open().prepareStatement(query);
+            sentenciaP.setString(1, CajaBuscar.getText());
+
+            ResultSet resultado = sentenciaP.executeQuery();
+
+            while (resultado.next()) {
+            	
+            	model_3.addRow(new Object[] { null, resultado.getString("artista"), resultado.getString("album"),
+						resultado.getString("nombre"), resultado.getString("genero"), resultado.getString("duracion"),
+						resultado.getString("precio"), resultado.getString("calidad"), resultado.getString("tamaño") });
+            }
+            
+            sentenciaP.close();
+            database.close();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+	}
+	
+	public void llenarTabla4C() {
+		DefaultTableModel model_4 = (DefaultTableModel) table_1.getModel();
+		try {
+            String query = "SELECT * FROM canciones WHERE nombre = ?;";
+            PreparedStatement sentenciaP = database.open().prepareStatement(query);
+            sentenciaP.setString(1, CajaBuscar.getText());
+
+            ResultSet resultado = sentenciaP.executeQuery();
+
+            while (resultado.next()) {
+            	
+            	model_4.addRow(new Object[] { null, resultado.getString("artista"), resultado.getString("album"),
+						resultado.getString("nombre"), resultado.getString("genero"), resultado.getString("duracion"),
+						resultado.getString("precio"), resultado.getString("calidad"), resultado.getString("tamaño") });
+            }
+            
+            sentenciaP.close();
+            database.close();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
 	}
 }
