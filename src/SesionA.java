@@ -50,9 +50,9 @@ public class SesionA extends JFrame {
 		JButton InitSesion = new JButton("Iniciar Sesion");
 		InitSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent c) {
-				VentanaAdmin ventana = new VentanaAdmin();
-        		ventana.setVisible(true);
-				/*String usuario = User.getText();
+				//VentanaAdmin ventana = new VentanaAdmin();
+        		//ventana.setVisible(true);
+				String usuario = User.getText();
 				String contrasena = pass.getText();
 				try {
 					String query = "SELECT pass FROM administradores WHERE usuario = ?;";
@@ -60,13 +60,19 @@ public class SesionA extends JFrame {
 		            sentenciaP.setString(1, usuario);
 
 		            ResultSet resultado = sentenciaP.executeQuery();
-
-		            while (resultado.next()) {
-		            	if(resultado.getString("pass").equals(contrasena)) {
-		            		VentanaAdmin ventana = new VentanaAdmin();
-		            		ventana.setVisible(true);
-		            	}
-		                
+		            if((User.getText().trim().equals("")) || (pass.getText().trim().equals(""))) {
+	            		JOptionPane.showMessageDialog(null, "Ingrese datos", "Error!", JOptionPane.ERROR_MESSAGE, null);
+	            	}
+		            else {
+		            	while (resultado.next()) {
+			            	
+			            	if(resultado.getString("pass").equals(contrasena)) {
+			            		VentanaAdmin ventana = new VentanaAdmin();
+			            		ventana.setVisible(true);
+			            	}else if(!resultado.getString("pass").equals(contrasena)){
+			            		JOptionPane.showMessageDialog(null, "Contraseña erronea!", "Error!", JOptionPane.ERROR_MESSAGE, null);
+			            	}
+			            }
 		            }
 		            
 		            sentenciaP.close();
@@ -74,7 +80,8 @@ public class SesionA extends JFrame {
 		        } catch (SQLException e) {
 		        	JOptionPane.showMessageDialog(null, "No se puede iniciar", "Error!", JOptionPane.ERROR_MESSAGE, null);
 		            System.out.println(e.getMessage());
-		        }*/
+		        }
+				
 			};
 		});
 		

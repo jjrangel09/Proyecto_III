@@ -229,5 +229,4 @@ public class VentanaRegisU extends JFrame {
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
-
 }

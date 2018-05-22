@@ -16,7 +16,6 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.JPasswordField;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -75,24 +74,31 @@ public class VentanaAdmin extends JFrame {
 		JButton btnAgregarNuevoAdministrador = new JButton("Agregar Nuevo ADMINISTRADOR");
 		btnAgregarNuevoAdministrador.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel.createSequentialGroup().addContainerGap().addComponent(scrollPane_1,
-										GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE))
-								.addGroup(gl_panel.createSequentialGroup().addGap(36)
-										.addComponent(btnAgregarNuevoUsuario, GroupLayout.PREFERRED_SIZE, 308,
-												GroupLayout.PREFERRED_SIZE)
-										.addGap(36).addComponent(btnAgregarNuevoAdministrador)))
-						.addContainerGap()));
-		gl_panel.setVerticalGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup().addGap(44)
-						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(btnAgregarNuevoAdministrador, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnAgregarNuevoUsuario, GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
-						.addGap(47).addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
-						.addContainerGap()));
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(36)
+							.addComponent(btnAgregarNuevoUsuario, GroupLayout.PREFERRED_SIZE, 308, GroupLayout.PREFERRED_SIZE)
+							.addGap(36)
+							.addComponent(btnAgregarNuevoAdministrador))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)))
+					.addContainerGap())
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(44)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(btnAgregarNuevoAdministrador, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnAgregarNuevoUsuario, GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
+					.addGap(47)
+					.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 329, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(55, Short.MAX_VALUE))
+		);
 
 		table_1 = new JTable();
 		table_1.setModel(new DefaultTableModel(new Object[][] {},
@@ -115,7 +121,8 @@ public class VentanaAdmin extends JFrame {
 		}
 		scrollPane_1.setViewportView(table_1);
 		panel.setLayout(gl_panel);
-
+		
+		
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Buscar Usuarios", null, panel_1, null);
 
