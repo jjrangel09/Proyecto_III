@@ -19,12 +19,8 @@ public class SesionA extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField User;
-<<<<<<< HEAD
-	private JTextField pass;
 	static private DBManager database = new DBManager();
-=======
 	private JPasswordField pass;
->>>>>>> master
 
 	public SesionA() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
