@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
@@ -28,13 +29,6 @@ public class VentanaUsu extends JFrame {
 	private JTable table_2;
 	private JTable table_3;
 
-	/**
-	 * Launch the application.
-	 */
-	/**
-	 * Create the frame.
-	 */
-
 	public VentanaUsu(String uSesion) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 864, 387);
@@ -50,6 +44,38 @@ public class VentanaUsu extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 
 		JButton btnNewButton = new JButton("Comprar");
+		btnNewButton.addActionListener(new ActionListener() {
+			private DefaultTableModel m;
+			public void actionPerformed(ActionEvent e) {
+				int seleccion = table.getSelectedRow();
+				try {
+					String cancion, nombreC, precio;
+					int copias = 0;
+					if(seleccion == -1) {
+						JOptionPane.showMessageDialog(null, "Debe seleccionar una cancion de la tabla!", "error", JOptionPane.ERROR_MESSAGE);
+					}else {
+						m = (DefaultTableModel) table.getModel();
+						cancion = table.getValueAt(seleccion, 3).toString();
+						nombreC = uSesion;
+						precio = table.getValueAt(seleccion, 6).toString();
+						String query = "SELECT copias FROM cancionesV WHERE cancion = ?;";
+						PreparedStatement sentenciaP = database.open().prepareStatement(query);
+						sentenciaP.setString(1, cancion);
+						ResultSet resultado = sentenciaP.executeQuery();
+						while (resultado.next()) {
+							copias += resultado.getInt("copias");
+						}
+						copias += 1;
+						sentenciaP.close();
+						database.close();
+						
+						
+					}
+				} catch (Exception e2) {
+					
+				}
+			}
+		});
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()

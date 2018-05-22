@@ -1,6 +1,3 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -17,6 +14,7 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
+@SuppressWarnings("serial")
 public class VentanaRegisA extends JFrame {
 	
 	private static DBManager database = new DBManager();
@@ -61,6 +59,7 @@ public class VentanaRegisA extends JFrame {
 		
 		JButton btnAgregar = new JButton("Agregar");
 		btnAgregar.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				try {
 					if((cNombre.getText().trim().equals("")) || (cApellido.getText().trim().equals("")) || (cUsuario.getText().trim().equals("")) || (cPass.getText().trim().equals("")) || (cEdad.getText().trim().equals("")) || (cTel.getText().trim().equals("")) || (cDoc.getText().trim().equals(""))) {

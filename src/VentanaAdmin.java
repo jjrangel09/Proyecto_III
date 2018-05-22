@@ -322,6 +322,7 @@ public class VentanaAdmin extends JFrame {
 
 		JButton btnActualizarUsuario = new JButton("Actualizar Usuario");
 		btnActualizarUsuario.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				String usuario = LeerUsuE.getText();
 				try {
@@ -565,15 +566,6 @@ public class VentanaAdmin extends JFrame {
 		JLabel lblDiscos = new JLabel("Discos");
 		lblDiscos.setFont(new Font("Tahoma", Font.BOLD, 15));
 
-		JButton btnAgregar_1 = new JButton("Agregar");
-		btnAgregar_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				AgregarAlbum frame = new AgregarAlbum();
-				frame.setVisible(true);
-				frame.setLocationRelativeTo(null);
-			}
-		});
-
 		JButton btnEditar_1 = new JButton("Editar");
 		btnEditar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -621,63 +613,84 @@ public class VentanaAdmin extends JFrame {
 				frame.setLocationRelativeTo(null);
 			}
 		});
+		
+		JButton btnAgregar_1 = new JButton("Agregar");
+		btnAgregar_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AgregarAlbum frame = new AgregarAlbum();
+				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
+			}
+		});
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2.createSequentialGroup().addGap(98)
-						.addGroup(gl_panel_2
-								.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblArtista, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnAgregar)
-								.addGroup(gl_panel_2
-										.createParallelGroup(Alignment.TRAILING, false)
-										.addComponent(btnEditar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE,
-												GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addComponent(btnEliminar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE,
-												GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-						.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING).addGroup(gl_panel_2
-								.createSequentialGroup().addGap(162)
+		gl_panel_2.setHorizontalGroup(
+			gl_panel_2.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addGap(98)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblArtista, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnAgregar)
+						.addGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING, false)
+							.addComponent(btnEditar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(btnEliminar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_2.createSequentialGroup()
+							.addGap(162)
+							.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(btnEditar_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnEliminar_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnAgregar_1)))
+						.addGroup(gl_panel_2.createSequentialGroup()
+							.addGap(176)
+							.addComponent(lblDiscos)))
+					.addPreferredGap(ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_panel_2.createSequentialGroup()
+							.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING, false)
-										.addComponent(btnAgregar_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
-												Short.MAX_VALUE)
-										.addComponent(btnEditar_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
-												Short.MAX_VALUE)
-										.addComponent(btnEliminar_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
-												Short.MAX_VALUE)))
-								.addGroup(gl_panel_2.createSequentialGroup().addGap(176).addComponent(lblDiscos)))
-						.addPreferredGap(ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
-						.addGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING)
-								.addGroup(gl_panel_2.createSequentialGroup()
-										.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-												.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING, false)
-														.addComponent(btnEditar_2, GroupLayout.DEFAULT_SIZE,
-																GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-														.addComponent(btnAgregar_2, GroupLayout.DEFAULT_SIZE,
-																GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-												.addComponent(btnEliminar_2))
-										.addContainerGap(124, Short.MAX_VALUE))
-								.addGroup(gl_panel_2.createSequentialGroup().addComponent(lblNewLabel).addGap(119))))
-				.addGroup(Alignment.TRAILING, gl_panel_2.createSequentialGroup().addContainerGap()
-						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE).addContainerGap()));
-		gl_panel_2.setVerticalGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel_2.createSequentialGroup().addGap(24)
-						.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE).addComponent(lblNewLabel)
-								.addComponent(lblArtista).addComponent(lblDiscos))
-						.addGap(18)
-						.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE).addComponent(btnAgregar)
-								.addComponent(btnAgregar_1).addComponent(btnAgregar_2))
-						.addGap(49)
-						.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE).addComponent(btnEditar)
-								.addComponent(btnEditar_1).addComponent(btnEditar_2))
-						.addPreferredGap(ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-						.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE).addComponent(btnEliminar)
-								.addComponent(btnEliminar_1).addComponent(btnEliminar_2))
-						.addGap(35)
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap()));
+									.addComponent(btnEditar_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addComponent(btnAgregar_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+								.addComponent(btnEliminar_2))
+							.addContainerGap(133, Short.MAX_VALUE))
+						.addGroup(gl_panel_2.createSequentialGroup()
+							.addComponent(lblNewLabel)
+							.addGap(119))))
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_panel_2.setVerticalGroup(
+			gl_panel_2.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addGap(24)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNewLabel)
+						.addComponent(lblArtista)
+						.addComponent(lblDiscos))
+					.addGap(18)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnAgregar)
+						.addComponent(btnAgregar_2)
+						.addComponent(btnAgregar_1))
+					.addGap(49)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnEditar)
+						.addComponent(btnEditar_1)
+						.addComponent(btnEditar_2))
+					.addPreferredGap(ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnEliminar)
+						.addComponent(btnEliminar_1)
+						.addComponent(btnEliminar_2))
+					.addGap(35)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+		);
 
 		table = new JTable();
 		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Imagen", "Nombre Artista", "Album",
-				"Cancion", "Genero", "Duracion", "Precio", "Calidad", "Tamaño (MB)" }));
+				"Cancion", "Genero", "Duracion", "Precio", "Calidad", "TamaÃ±o (MB)" }));
 		scrollPane.setViewportView(table);
 		panel_2.setLayout(gl_panel_2);
 
