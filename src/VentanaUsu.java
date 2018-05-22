@@ -256,6 +256,11 @@ public class VentanaUsu extends JFrame {
 		table_2.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Imagen", "Album", "Nombre Artista",
 				"Genero", "Duracion", "Precio", "Calidad", "Tamaño(MB)" }));
 		@SuppressWarnings("unused")
+		
+		
+		
+		
+		
 		DefaultTableModel model_3 = (DefaultTableModel) table_2.getModel();
 		scrollPane_2.setViewportView(table_2);
 		
