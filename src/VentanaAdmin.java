@@ -395,28 +395,91 @@ public class VentanaAdmin extends JFrame {
 		lblArtista.setFont(new Font("Tahoma", Font.BOLD, 15));
 
 		JButton btnAgregar = new JButton("Agregar");
+		btnAgregar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AgregarArtista frame = new AgregarArtista();
+				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
+			}
+		});
 
 		JButton btnEditar = new JButton("Editar");
+		btnEditar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				editarArtista frame = new editarArtista();
+				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
+			}
+		});
 
 		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				eliminarArtista frame = new eliminarArtista();
+				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
+			}
+		});
 
 		JLabel lblDiscos = new JLabel("Discos");
 		lblDiscos.setFont(new Font("Tahoma", Font.BOLD, 15));
 
 		JButton btnAgregar_1 = new JButton("Agregar");
+		btnAgregar_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AgregarAlbum frame = new AgregarAlbum();
+				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
+			}
+		});
 
 		JButton btnEditar_1 = new JButton("Editar");
+		btnEditar_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				editarAlbum frame = new editarAlbum();
+				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
+			}
+		});
 
 		JButton btnEliminar_1 = new JButton("Eliminar");
+		btnEliminar_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				eliminarAlbum frame = new eliminarAlbum();
+				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
+			}
+		});
 
 		JLabel lblNewLabel = new JLabel("Canciones");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
 
 		JButton btnAgregar_2 = new JButton("Agregar");
+		btnAgregar_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				agregarMusica frame = new agregarMusica();
+				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
+			}
+		});
 
 		JButton btnEditar_2 = new JButton("Editar");
+		btnEditar_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				editarMusica frame = new editarMusica();
+				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
+			}
+		});
 
 		JButton btnEliminar_2 = new JButton("Eliminar");
+		btnEliminar_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EliminarMusica frame = new EliminarMusica();
+				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
+			}
+		});
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup().addGap(98)
