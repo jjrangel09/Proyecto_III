@@ -7,6 +7,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -14,11 +15,15 @@ import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class VentanaRegisU extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField cajaNombre;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
@@ -55,25 +60,80 @@ public class VentanaRegisU extends JFrame {
 		
 		JLabel lblTelefono = new JLabel("Telefono");
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		cajaNombre = new JTextField();
+		cajaNombre.addKeyListener(new KeyAdapter() {
+			
+			public void keyTyped(KeyEvent e) {
+				char validar = e.getKeyChar();
+				if(Character.isDigit(validar)) {
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(null, "              Solo letras");
+				}
+			}
+		});
+		cajaNombre.setColumns(10);
 		
 		textField_1 = new JTextField();
+		textField_1.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				char validar = e.getKeyChar();
+				if(Character.isDigit(validar)) {
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(null, "              Solo letras");
+				}
+			}
+		});
 		textField_1.setColumns(10);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
 		
 		textField_3 = new JTextField();
+		textField_3.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				char validar = e.getKeyChar();
+				if(Character.isLetter(validar)) {
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(null, "              Solo numeros");
+				}
+			}
+		});
 		textField_3.setColumns(10);
 		
 		textField_4 = new JTextField();
+		textField_4.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				char validar = e.getKeyChar();
+				if(Character.isLetter(validar)) {
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(null, "              Solo numeros");
+				}
+			}
+		});
 		textField_4.setColumns(10);
 		
 		textField_5 = new JTextField();
+		textField_5.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				char validar = e.getKeyChar();
+				if(Character.isLetter(validar)) {
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(null, "              Solo numeros");
+				}
+			}
+		});
 		textField_5.setColumns(10);
 		
 		JButton botonIngreU = new JButton("Ingresar");
+		botonIngreU.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a");
 		
@@ -100,7 +160,7 @@ public class VentanaRegisU extends JFrame {
 								.addComponent(textField_3)
 								.addComponent(textField_2)
 								.addComponent(textField_1)
-								.addComponent(textField)
+								.addComponent(cajaNombre)
 								.addComponent(cajaContra)))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(55)
@@ -118,7 +178,7 @@ public class VentanaRegisU extends JFrame {
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNombre)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(cajaNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblApellido)

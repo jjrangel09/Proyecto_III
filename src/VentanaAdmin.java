@@ -9,12 +9,15 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTable;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.JPasswordField;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 @SuppressWarnings("serial")
 public class VentanaAdmin extends JFrame {
@@ -104,11 +107,31 @@ public class VentanaAdmin extends JFrame {
 		JLabel lblNombre = new JLabel("Nombre:");
 		
 		textField_1 = new JTextField();
+		textField_1.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				char validar = e.getKeyChar();
+				if(Character.isDigit(validar)) {
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(null, "              Solo letras");
+				}
+			}
+		});
 		textField_1.setColumns(10);
 		
 		JLabel lblApellido = new JLabel("Apellido:");
 		
 		textField_2 = new JTextField();
+		textField_2.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				char validar = e.getKeyChar();
+				if(Character.isDigit(validar)) {
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(null, "              Solo letras");
+				}
+			}
+		});
 		textField_2.setColumns(10);
 		
 		JLabel lblUsuario = new JLabel("Nombre usuario:");
@@ -120,12 +143,42 @@ public class VentanaAdmin extends JFrame {
 		JLabel lblTelefono = new JLabel("Telefono:");
 		
 		textField_3 = new JTextField();
+		textField_3.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				char validar = e.getKeyChar();
+				if(Character.isLetter(validar)) {
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(null, "              Solo numeros");
+				}
+			}
+		});
 		textField_3.setColumns(10);
 		
 		textField_4 = new JTextField();
+		textField_4.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				char validar = e.getKeyChar();
+				if(Character.isLetter(validar)) {
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(null, "              Solo numeros");
+				}
+			}
+		});
 		textField_4.setColumns(10);
 		
 		textField_5 = new JTextField();
+		textField_5.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				char validar = e.getKeyChar();
+				if(Character.isLetter(validar)) {
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(null, "              Solo numeros");
+				}
+			}
+		});
 		textField_5.setColumns(10);
 		
 		textField_6 = new JTextField();
@@ -230,6 +283,16 @@ public class VentanaAdmin extends JFrame {
 		JScrollPane scrollPane_2 = new JScrollPane();
 		
 		cajaCompras = new JTextField();
+		cajaCompras.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				char validar = e.getKeyChar();
+				if(Character.isLetter(validar)) {
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(null, "              Solo numeros");
+				}
+			}
+		});
 		cajaCompras.setColumns(10);
 		
 		JButton btnConsultarCom = new JButton("Consultar compras");
@@ -245,6 +308,16 @@ public class VentanaAdmin extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("Ingresar fecha final (DD-MM-YYYY)");
 		
 		textField_7 = new JTextField();
+		textField_7.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				char validar = e.getKeyChar();
+				if(Character.isLetter(validar)) {
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(null, "              Solo numeros");
+				}
+			}
+		});
 		textField_7.setColumns(10);
 		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
 		gl_panel_3.setHorizontalGroup(
