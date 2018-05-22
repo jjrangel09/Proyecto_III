@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JPasswordField;
 
 public class VentanaRegisU extends JFrame {
 
@@ -23,6 +24,7 @@ public class VentanaRegisU extends JFrame {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
+	private JPasswordField cajaContra;
 
 	/**
 	 * Launch the application.
@@ -33,7 +35,7 @@ public class VentanaRegisU extends JFrame {
 	 */
 	public VentanaRegisU() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 332, 381);
+		setBounds(100, 100, 332, 424);
 		contentPane = new JPanel();
 		contentPane.setBorder(null);
 		setContentPane(contentPane);
@@ -72,6 +74,10 @@ public class VentanaRegisU extends JFrame {
 		textField_5.setColumns(10);
 		
 		JButton botonIngreU = new JButton("Ingresar");
+		
+		JLabel lblContrasea = new JLabel("Contrase\u00F1a");
+		
+		cajaContra = new JPasswordField();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -83,23 +89,25 @@ public class VentanaRegisU extends JFrame {
 								.addComponent(lblNombre)
 								.addComponent(lblApellido)
 								.addComponent(lblNewLabel)
+								.addComponent(lblContrasea)
 								.addComponent(lblDocumento)
-								.addComponent(lblEdad)
-								.addComponent(lblTelefono))
+								.addComponent(lblTelefono)
+								.addComponent(lblEdad))
 							.addGap(33)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(100)
-							.addComponent(botonIngreU))
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(textField_5)
+								.addComponent(textField_4)
+								.addComponent(textField_3)
+								.addComponent(textField_2)
+								.addComponent(textField_1)
+								.addComponent(textField)
+								.addComponent(cajaContra)))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(55)
-							.addComponent(lblRegistroDeUsuario)))
+							.addComponent(lblRegistroDeUsuario))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(100)
+							.addComponent(botonIngreU)))
 					.addContainerGap(85, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
@@ -121,19 +129,23 @@ public class VentanaRegisU extends JFrame {
 						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblDocumento)
-						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblContrasea)
+						.addComponent(cajaContra, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblEdad)
-						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
+						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblDocumento))
+					.addGap(15)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblTelefono)
-						.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
+						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblEdad))
+					.addGap(14)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblTelefono))
+					.addGap(27)
 					.addComponent(botonIngreU)
-					.addContainerGap(26, Short.MAX_VALUE))
+					.addGap(33))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
