@@ -1,6 +1,9 @@
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -16,9 +19,9 @@ public class SesionA extends JFrame {
 	private JPanel contentPane;
 	private JTextField User;
 	private JTextField pass;
+	static private DBManager database = new DBManager();
 
 	public SesionA() {
-		boolean sesion = true;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 311, 185);
 		contentPane = new JPanel();
@@ -50,13 +53,30 @@ public class SesionA extends JFrame {
 		JButton InitSesion = new JButton("Iniciar Sesion");
 		InitSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent c) {
-				if (sesion) {
-					VentanaAdmin ventanaA = new VentanaAdmin();
-					ventanaA.setVisible(true);
-				}else {
-					JOptionPane.showMessageDialog(null, "No se puede iniciar", "Error!", JOptionPane.ERROR_MESSAGE, null);
-				}
-			}
+				String usuario = User.getText();
+				String contrasena = pass.getText();
+				try {
+					String query = "SELECT pass FROM administradores WHERE usuario = ?;";
+		            PreparedStatement sentenciaP = database.open().prepareStatement(query);
+		            sentenciaP.setString(1, usuario);
+
+		            ResultSet resultado = sentenciaP.executeQuery();
+
+		            while (resultado.next()) {
+		            	if(resultado.getString("pass").equals(contrasena)) {
+		            		VentanaAdmin ventana = new VentanaAdmin();
+		            		ventana.setVisible(true);
+		            	}
+		                
+		            }
+		            
+		            sentenciaP.close();
+		            database.close();		            
+		        } catch (SQLException e) {
+		        	JOptionPane.showMessageDialog(null, "No se puede iniciar", "Error!", JOptionPane.ERROR_MESSAGE, null);
+		            System.out.println(e.getMessage());
+		        }
+			};
 		});
 		panel.add(InitSesion, "cell 4 4");
 	}
