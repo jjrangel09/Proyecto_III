@@ -49,6 +49,7 @@ public class SesionA extends JFrame {
 
 		JButton InitSesion = new JButton("Iniciar Sesion");
 		InitSesion.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent c) {
 				//VentanaAdmin ventana = new VentanaAdmin();
         		//ventana.setVisible(true);

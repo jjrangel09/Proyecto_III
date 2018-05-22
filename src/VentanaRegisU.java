@@ -15,6 +15,7 @@ import java.awt.event.KeyEvent;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+@SuppressWarnings("serial")
 public class VentanaRegisU extends JFrame {
 	 private static DBManager database = new DBManager();
 	private JPanel contentPane;
@@ -126,6 +127,7 @@ public class VentanaRegisU extends JFrame {
 		
 		JButton botonIngreU = new JButton("Ingresar");
 		botonIngreU.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				
 				try {

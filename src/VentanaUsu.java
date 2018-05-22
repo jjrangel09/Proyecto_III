@@ -24,7 +24,7 @@ public class VentanaUsu extends JFrame {
 	private JTable table;
 	private JTable table_1;
 	private JTextField CajaBuscar;
-	private String iniciado;
+
 	private JTable table_2;
 	private JTable table_3;
 
@@ -219,6 +219,7 @@ public class VentanaUsu extends JFrame {
 		table_2 = new JTable();
 		table_2.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Imagen", "Album", "Nombre Artista",
 				"Genero", "Duracion", "Precio", "Calidad", "Tamaño(MB)" }));
+		@SuppressWarnings("unused")
 		DefaultTableModel model_3 = (DefaultTableModel) table_2.getModel();
 		scrollPane_2.setViewportView(table_2);
 		
@@ -228,6 +229,7 @@ public class VentanaUsu extends JFrame {
 		table_3 = new JTable();
 		table_3.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Imagen", "Nombre Artista", "Album",
 				"Cancion", "Duracion", "Precio", "Calidad", "Tamaño(MB)" }));
+		@SuppressWarnings("unused")
 		DefaultTableModel model_4 = (DefaultTableModel) table_3.getModel();
 		scrollPane_3.setViewportView(table_3);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

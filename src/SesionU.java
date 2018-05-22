@@ -40,6 +40,7 @@ public class SesionU extends JFrame {
 		
 		JButton botonIngre = new JButton("Ingresar");
 		botonIngre.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				String usuario = cajaUser.getText();
 				String contrasena = passwordField.getText();
