@@ -45,12 +45,14 @@ public class VentanaUsu extends JFrame {
 
 		JButton btnNewButton = new JButton("Comprar");
 		btnNewButton.addActionListener(new ActionListener() {
+			@SuppressWarnings("unused")
 			private DefaultTableModel m;
 			public void actionPerformed(ActionEvent e) {
 				int seleccion = table.getSelectedRow();
 				try {
+					@SuppressWarnings("unused")
 					String cancion, nombreC, precio;
-					int copias = 0;
+					int copias = 1;
 					if(seleccion == -1) {
 						JOptionPane.showMessageDialog(null, "Debe seleccionar una cancion de la tabla!", "error", JOptionPane.ERROR_MESSAGE);
 					}else {
@@ -58,17 +60,21 @@ public class VentanaUsu extends JFrame {
 						cancion = table.getValueAt(seleccion, 3).toString();
 						nombreC = uSesion;
 						precio = table.getValueAt(seleccion, 6).toString();
-						String query = "SELECT copias FROM cancionesV WHERE cancion = ?;";
-						PreparedStatement sentenciaP = database.open().prepareStatement(query);
-						sentenciaP.setString(1, cancion);
-						ResultSet resultado = sentenciaP.executeQuery();
-						while (resultado.next()) {
-							copias += resultado.getInt("copias");
-						}
-						copias += 1;
-						sentenciaP.close();
-						database.close();
-						
+						try {
+							String query = "INSERT INTO `cancionesv` (`cancion`, `copias`, `precio`, `nombreC`) VALUES (?,?,?,?);";
+				            PreparedStatement sentenciaP = database.open().prepareStatement(query);
+				            	sentenciaP.setString(1, cancion);
+				            	sentenciaP.setInt(2, copias);
+				            	sentenciaP.setString(3, precio);
+				            	sentenciaP.setString(4, uSesion);
+				            	sentenciaP.executeUpdate();
+				            	JOptionPane.showMessageDialog(null, "Comprado con exito", "Exito", JOptionPane.INFORMATION_MESSAGE, null);
+					            sentenciaP.close();
+					            database.close();		            
+				        } catch (SQLException ae) {
+				        	JOptionPane.showMessageDialog(null, "No se puede iniciar", "Error!", JOptionPane.ERROR_MESSAGE, null);
+				            System.out.println(ae.getMessage());
+				        }
 						
 					}
 				} catch (Exception e2) {
