@@ -20,32 +20,18 @@ import javax.swing.JComboBox;
 public class AgregarAlbum extends JFrame {
 	private static DBManager database = new DBManager();
 	private JPanel contentPane;
-<<<<<<< HEAD
 	private JTextField nombreA;
 	private JTextField genero;
 	private JTextField precio;
-=======
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
->>>>>>> master
 
-	/**
-	 * Launch the application.
-	 */
-
-	/**
-	 * Create the frame.
-	 */
 	@SuppressWarnings("unchecked")
 	public AgregarAlbum() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-<<<<<<< HEAD
-		setBounds(100, 100, 287, 285);
-=======
 		setBounds(100, 100, 287, 299);
->>>>>>> master
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -87,7 +73,6 @@ public class AgregarAlbum extends JFrame {
 		}
 
 		JButton btnAgregar = new JButton("Agregar");
-<<<<<<< HEAD
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -151,8 +136,6 @@ public class AgregarAlbum extends JFrame {
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(lblPrecio).addComponent(
 						precio, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 				.addPreferredGap(ComponentPlacement.RELATED, 22, Short.MAX_VALUE).addComponent(btnAgregar).addGap(22)));
-=======
-		
 		textField = new JTextField();
 		textField.setColumns(10);
 		
@@ -162,11 +145,9 @@ public class AgregarAlbum extends JFrame {
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
 		
-		JLabel lblPrecio = new JLabel("Precio");
-		
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+	
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
@@ -223,7 +204,6 @@ public class AgregarAlbum extends JFrame {
 					.addComponent(btnAgregar)
 					.addGap(27))
 		);
->>>>>>> master
 		contentPane.setLayout(gl_contentPane);
 	}
 }
