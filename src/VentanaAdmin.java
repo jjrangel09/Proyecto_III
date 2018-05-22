@@ -330,7 +330,7 @@ public class VentanaAdmin extends JFrame {
 		            PreparedStatement sentenciaP = database.open().prepareStatement(query);
 		            sentenciaP.setString(1, usuario);
 
-		            //ResultSet resultado = sentenciaP.executeUpate();
+		            //ResultSet resultado = sentenciaP.executeQuery();
 		            
 		            if((LeerUsuE.getText().trim().equals(""))) {
 	            		JOptionPane.showMessageDialog(null, "Ingrese datos", "Error!", JOptionPane.ERROR_MESSAGE, null);
@@ -343,7 +343,7 @@ public class VentanaAdmin extends JFrame {
 		            	sentenciaP.setString(5, cEdad.getText());
 		            	sentenciaP.setString(6, cTel.getText());
 		            	sentenciaP.setString(7, cPass.getText());
-		            	sentenciaP.setString(8, LeerUsuE.getText());
+		            	sentenciaP.setString(8, cUsu.getText());
 		            	sentenciaP.executeUpdate();
 			            JOptionPane.showMessageDialog(null, "Actualizado correctamente");
 		            } 
@@ -358,33 +358,6 @@ public class VentanaAdmin extends JFrame {
 		});
 
 		JButton btnBorrarUsuario = new JButton("Borrar Usuario");
-		btnBorrarUsuario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				String usuario = LeerUsuE.getText();
-				try {
-					String query = "DELETE FROM usuarios  WHERE usuario = ?;";
-		            PreparedStatement sentenciaP = database.open().prepareStatement(query);
-		            sentenciaP.setString(1, usuario);
-
-		            //ResultSet resultado = sentenciaP.executeUpate();
-		            
-		            if((LeerUsuE.getText().trim().equals(""))) {
-	            		JOptionPane.showMessageDialog(null, "Ingrese datos", "Error!", JOptionPane.ERROR_MESSAGE, null);
-	            	}
-		            else {
-		            	
-		            	sentenciaP.execute();
-			            JOptionPane.showMessageDialog(null, "Borrado correctamente");
-		            } 
-		            
-		            sentenciaP.close();
-		            database.close();		            
-		        } catch (SQLException ae) {
-		        	JOptionPane.showMessageDialog(null, "No se puede iniciar", "Error!", JOptionPane.ERROR_MESSAGE, null);
-		            System.out.println(ae.getMessage());
-		        }
-			}
-		});
 		btnBorrarUsuario.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnBorrarUsuario.setForeground(Color.RED);
 
@@ -641,20 +614,12 @@ public class VentanaAdmin extends JFrame {
 			}
 		});
 		
-<<<<<<< Updated upstream
 		JButton btnAgregar_1 = new JButton("Agregar");
 		btnAgregar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AgregarAlbum frame = new AgregarAlbum();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
-=======
-		JButton btnNewButton = new JButton("Actualizar");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				limpiarTabla(3);
-				llenarTablaM();
->>>>>>> Stashed changes
 			}
 		});
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
@@ -672,7 +637,6 @@ public class VentanaAdmin extends JFrame {
 						.addGroup(gl_panel_2.createSequentialGroup()
 							.addGap(162)
 							.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING, false)
-<<<<<<< Updated upstream
 								.addComponent(btnEditar_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addComponent(btnEliminar_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addComponent(btnAgregar_1)))
@@ -680,15 +644,6 @@ public class VentanaAdmin extends JFrame {
 							.addGap(176)
 							.addComponent(lblDiscos)))
 					.addPreferredGap(ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
-=======
-								.addComponent(btnAgregar_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnEditar_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnEliminar_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-						.addGroup(gl_panel_2.createSequentialGroup()
-							.addGap(176)
-							.addComponent(lblDiscos)))
-					.addPreferredGap(ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
->>>>>>> Stashed changes
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_panel_2.createSequentialGroup()
 							.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -696,7 +651,6 @@ public class VentanaAdmin extends JFrame {
 									.addComponent(btnEditar_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 									.addComponent(btnAgregar_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 								.addComponent(btnEliminar_2))
-<<<<<<< Updated upstream
 							.addContainerGap(133, Short.MAX_VALUE))
 						.addGroup(gl_panel_2.createSequentialGroup()
 							.addComponent(lblNewLabel)
@@ -705,20 +659,6 @@ public class VentanaAdmin extends JFrame {
 					.addContainerGap()
 					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
 					.addContainerGap())
-=======
-							.addContainerGap(124, Short.MAX_VALUE))
-						.addGroup(gl_panel_2.createSequentialGroup()
-							.addComponent(lblNewLabel)
-							.addGap(119))))
-				.addGroup(Alignment.LEADING, gl_panel_2.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
-					.addContainerGap())
-				.addGroup(Alignment.LEADING, gl_panel_2.createSequentialGroup()
-					.addGap(334)
-					.addComponent(btnNewButton)
-					.addContainerGap(356, Short.MAX_VALUE))
->>>>>>> Stashed changes
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.TRAILING)
@@ -731,13 +671,8 @@ public class VentanaAdmin extends JFrame {
 					.addGap(18)
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnAgregar)
-<<<<<<< Updated upstream
 						.addComponent(btnAgregar_2)
 						.addComponent(btnAgregar_1))
-=======
-						.addComponent(btnAgregar_1)
-						.addComponent(btnAgregar_2))
->>>>>>> Stashed changes
 					.addGap(49)
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnEditar)
@@ -749,7 +684,6 @@ public class VentanaAdmin extends JFrame {
 						.addComponent(btnEliminar_1)
 						.addComponent(btnEliminar_2))
 					.addGap(35)
-<<<<<<< Updated upstream
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
@@ -757,17 +691,6 @@ public class VentanaAdmin extends JFrame {
 		table = new JTable();
 		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Imagen", "Nombre Artista", "Album",
 				"Cancion", "Genero", "Duracion", "Precio", "Calidad", "TamaÃ±o (MB)" }));
-=======
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnNewButton)
-					.addGap(24))
-		);
-
-		table = new JTable();
-		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Nombre", "Album",
-				"Duracion", "Precio", "Calidad", "Tamaño", "Artista", "Genero" }));
->>>>>>> Stashed changes
 		scrollPane.setViewportView(table);
 		panel_2.setLayout(gl_panel_2);
 
@@ -776,10 +699,8 @@ public class VentanaAdmin extends JFrame {
 	public void limpiarTabla(int a) {
 		DefaultTableModel tb = (DefaultTableModel) table_1.getModel();
 		DefaultTableModel tb3 = (DefaultTableModel) table_3.getModel();
-		DefaultTableModel tb2 = (DefaultTableModel) table.getModel();
 		int f = table_1.getRowCount()-1;
 		int g = table_3.getRowCount()-1;
-		int h = table.getRowCount()-1;
 		switch(a) {
 			case 1:
 				for(int i = f; i >=0; i--) {
@@ -789,10 +710,6 @@ public class VentanaAdmin extends JFrame {
 				for(int j = g; j>=0; j-- ) {
 					tb3.removeRow(tb3.getRowCount()-1);
 				}
-			case 3:
-				for(int k = h; k>=0; k-- ) {
-					tb2.removeRow(tb2.getRowCount()-1);
-				}	
 		}
 	}
 	
@@ -823,25 +740,6 @@ public class VentanaAdmin extends JFrame {
 			while (resultado.next()) {
 				model_2.addRow(new Object[] { resultado.getString("nombreA"), resultado.getString("apelA"),
 						resultado.getString("usuario"), resultado.getString("doc"), resultado.getString("edad"), resultado.getString("tel") });
-			}
-
-			sentenciaP.close();
-			database.close();
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		}
-	}
-	
-	public void llenarTablaM() {
-		DefaultTableModel model_3 = (DefaultTableModel) table.getModel();
-		try {
-			String query = "SELECT * FROM canciones;";
-			PreparedStatement sentenciaP = database.open().prepareStatement(query);
-			ResultSet resultado = sentenciaP.executeQuery();
-
-			while (resultado.next()) {
-				model_3.addRow(new Object[] { resultado.getString("nombre"), resultado.getString("album"),
-						resultado.getString("duracion"), resultado.getString("precio"), resultado.getString("calidad"), resultado.getString("tamaño"), resultado.getString("artista"), resultado.getString("genero") });
 			}
 
 			sentenciaP.close();
