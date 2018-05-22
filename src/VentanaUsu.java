@@ -21,14 +21,15 @@ public class VentanaUsu extends JFrame {
 	private JTable table_1;
 	private JTextField CajaBuscar;
 	private JTable table_2;
-
+	private String iniciado;
 	/**
 	 * Launch the application.
 	 */
 	/**
 	 * Create the frame.
 	 */
-	public VentanaUsu() {
+
+	public VentanaUsu(String uSesion) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 864, 387);
 		contentPane = new JPanel();

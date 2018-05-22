@@ -1,22 +1,23 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
 @SuppressWarnings("serial")
 public class SesionU extends JFrame {
-
+	static private DBManager database = new DBManager();
 	private JPanel contentPane;
 	private JTextField cajaUser;
 	private JPasswordField passwordField;
@@ -40,9 +41,33 @@ public class SesionU extends JFrame {
 		JButton botonIngre = new JButton("Ingresar");
 		botonIngre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaUsu ventanaU = new VentanaUsu();
-				ventanaU.setVisible(true);
-				ventanaU.setLocationRelativeTo(null);
+				String usuario = cajaUser.getText();
+				String contrasena = passwordField.getText();
+				try {
+					String query = "SELECT pass FROM usuarios WHERE usuario = ?;";
+		            PreparedStatement sentenciaP = database.open().prepareStatement(query);
+		            sentenciaP.setString(1, usuario);
+
+		            ResultSet resultado = sentenciaP.executeQuery();
+		            if((cajaUser.getText().trim().equals("")) || (passwordField.getText().trim().equals(""))) {
+	            		JOptionPane.showMessageDialog(null, "Ingrese datos", "Error!", JOptionPane.ERROR_MESSAGE, null);
+	            	}
+		            else {
+		            	while (resultado.next()) {  	
+			            	if(resultado.getString("pass").equals(contrasena)) {
+			            		VentanaUsu ventana = new VentanaUsu(usuario);
+			            		ventana.setVisible(true);
+			            	}else if(!resultado.getString("pass").equals(contrasena)){
+			            		JOptionPane.showMessageDialog(null, "Contraseña erronea!", "Error!", JOptionPane.ERROR_MESSAGE, null);
+			            	}
+			            }
+		            } 
+		            sentenciaP.close();
+		            database.close();		            
+		        } catch (SQLException ae) {
+		        	JOptionPane.showMessageDialog(null, "No se puede iniciar", "Error!", JOptionPane.ERROR_MESSAGE, null);
+		            //System.out.println(e.getMessage());
+		        }
 			}
 		});
 		
