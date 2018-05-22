@@ -1,34 +1,29 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.border.LineBorder;
-import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class VentanaRegisU extends JFrame {
-
+	 private static DBManager database = new DBManager();
 	private JPanel contentPane;
 	private JTextField cajaNombre;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private JTextField cajaApel;
+	private JTextField cajaUser;
+	private JTextField cajaDoc;
+	private JTextField cajaEd;
+	private JTextField cajaTel;
 	private JPasswordField cajaContra;
 
 	/**
@@ -74,8 +69,8 @@ public class VentanaRegisU extends JFrame {
 		});
 		cajaNombre.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.addKeyListener(new KeyAdapter() {
+		cajaApel = new JTextField();
+		cajaApel.addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent e) {
 				char validar = e.getKeyChar();
 				if(Character.isDigit(validar)) {
@@ -85,13 +80,13 @@ public class VentanaRegisU extends JFrame {
 				}
 			}
 		});
-		textField_1.setColumns(10);
+		cajaApel.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
+		cajaUser = new JTextField();
+		cajaUser.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.addKeyListener(new KeyAdapter() {
+		cajaDoc = new JTextField();
+		cajaDoc.addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent e) {
 				char validar = e.getKeyChar();
 				if(Character.isLetter(validar)) {
@@ -101,10 +96,10 @@ public class VentanaRegisU extends JFrame {
 				}
 			}
 		});
-		textField_3.setColumns(10);
+		cajaDoc.setColumns(10);
 		
-		textField_4 = new JTextField();
-		textField_4.addKeyListener(new KeyAdapter() {
+		cajaEd = new JTextField();
+		cajaEd.addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent e) {
 				char validar = e.getKeyChar();
 				if(Character.isLetter(validar)) {
@@ -114,10 +109,10 @@ public class VentanaRegisU extends JFrame {
 				}
 			}
 		});
-		textField_4.setColumns(10);
+		cajaEd.setColumns(10);
 		
-		textField_5 = new JTextField();
-		textField_5.addKeyListener(new KeyAdapter() {
+		cajaTel = new JTextField();
+		cajaTel.addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent e) {
 				char validar = e.getKeyChar();
 				if(Character.isLetter(validar)) {
@@ -127,11 +122,36 @@ public class VentanaRegisU extends JFrame {
 				}
 			}
 		});
-		textField_5.setColumns(10);
+		cajaTel.setColumns(10);
 		
 		JButton botonIngreU = new JButton("Ingresar");
 		botonIngreU.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					if((cajaUser.getText().trim().equals("")) || (cajaNombre.getText().trim().equals("")) || (cajaApel.getText().trim().equals("")) || (cajaDoc.getText().trim().equals("")) || (cajaEd.getText().trim().equals("")) || (cajaTel.getText().trim().equals("")) || (cajaContra.getText().trim().equals(""))) {
+						JOptionPane.showMessageDialog(null, "Gestione todos los campos");
+					}
+					else {
+		            String query = "INSERT INTO `usuarios` (`usuario`, `nombreU`, `apelU`, `doc`, `edad`, `tel`, `pass`) VALUES (?,?,?,?,?,?,?);";
+		            PreparedStatement sentenciaP = database.open().prepareStatement(query);
+		            sentenciaP.setString(1, cajaUser.getText());
+		            sentenciaP.setString(2, cajaNombre.getText());
+		            sentenciaP.setString(3, cajaApel.getText());
+		            sentenciaP.setString(4, cajaDoc.getText());
+		            sentenciaP.setString(5, cajaEd.getText());
+		            sentenciaP.setString(6, cajaTel.getText());
+		            sentenciaP.setString(7, cajaContra.getText());
+		            
+		            sentenciaP.executeUpdate();
+		            sentenciaP.close();
+		            database.close();
+		            JOptionPane.showMessageDialog(null, "Usuario agregado", "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
+					}
+		        } catch (SQLException ae) {
+		        	JOptionPane.showMessageDialog(null, "No se ha podido agregar", "Registro incompleto", JOptionPane.ERROR_MESSAGE);
+		            //ae.printStackTrace();
+		        }
 			}
 		});
 		
@@ -155,11 +175,11 @@ public class VentanaRegisU extends JFrame {
 								.addComponent(lblEdad))
 							.addGap(33)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(textField_5)
-								.addComponent(textField_4)
-								.addComponent(textField_3)
-								.addComponent(textField_2)
-								.addComponent(textField_1)
+								.addComponent(cajaTel)
+								.addComponent(cajaEd)
+								.addComponent(cajaDoc)
+								.addComponent(cajaUser)
+								.addComponent(cajaApel)
 								.addComponent(cajaNombre)
 								.addComponent(cajaContra)))
 						.addGroup(gl_contentPane.createSequentialGroup()
@@ -182,26 +202,26 @@ public class VentanaRegisU extends JFrame {
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblApellido)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(cajaApel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNewLabel)
-						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(cajaUser, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblContrasea)
 						.addComponent(cajaContra, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(cajaDoc, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblDocumento))
 					.addGap(15)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(cajaEd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblEdad))
 					.addGap(14)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(cajaTel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblTelefono))
 					.addGap(27)
 					.addComponent(botonIngreU)

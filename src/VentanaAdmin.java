@@ -16,6 +16,9 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.JPasswordField;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -58,6 +61,13 @@ public class VentanaAdmin extends JFrame {
 		
 		JButton btnAgregarNuevoUsuario = new JButton("Agregar Nuevo USUARIO");
 		btnAgregarNuevoUsuario.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		btnAgregarNuevoUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaRegisU iRegistro = new VentanaRegisU();
+				iRegistro.setVisible(true);
+				iRegistro.setLocationRelativeTo(null);
+			}
+		});
 		
 		JButton btnAgregarNuevoAdministrador = new JButton("Agregar Nuevo ADMINISTRADOR");
 		btnAgregarNuevoAdministrador.setFont(new Font("Tahoma", Font.PLAIN, 22));

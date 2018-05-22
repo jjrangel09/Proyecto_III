@@ -50,7 +50,9 @@ public class SesionA extends JFrame {
 		JButton InitSesion = new JButton("Iniciar Sesion");
 		InitSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent c) {
-				String usuario = User.getText();
+				VentanaAdmin ventana = new VentanaAdmin();
+        		ventana.setVisible(true);
+				/*String usuario = User.getText();
 				String contrasena = pass.getText();
 				try {
 					String query = "SELECT pass FROM administradores WHERE usuario = ?;";
@@ -72,7 +74,7 @@ public class SesionA extends JFrame {
 		        } catch (SQLException e) {
 		        	JOptionPane.showMessageDialog(null, "No se puede iniciar", "Error!", JOptionPane.ERROR_MESSAGE, null);
 		            System.out.println(e.getMessage());
-		        }
+		        }*/
 			};
 		});
 		

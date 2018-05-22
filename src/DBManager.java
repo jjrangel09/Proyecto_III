@@ -6,7 +6,7 @@ public class DBManager {
     // JDBC driver name and database URL
     private final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
     //private final String DB_URL = "jdbc:mysql://localhost:3306/personas?useSSL=false";
-    private final String DB_URL = "jdbc:mysql://localhost:3306/db_personas?useSSL=false";
+    private final String DB_URL = "jdbc:mysql://localhost:3306/proyecto_iii?useSSL=false";
     
     //  Database credentials
     private static final String USER = "root";
