@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class AgregarArtista extends JFrame {
-
+	
 	private JPanel contentPane;
 	private JTextField textField;
 
