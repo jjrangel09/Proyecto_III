@@ -25,8 +25,6 @@ public class VentanaUsu extends JFrame {
 	private JTable table;
 	private JTable table_1;
 	private JTextField CajaBuscar;
-
-	private JTable table_2;
 	private JTable table_3;
 
 	public VentanaUsu(String uSesion) {
@@ -249,29 +247,29 @@ public class VentanaUsu extends JFrame {
 		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.addTab("Compras", null, tabbedPane_1, null);
 		
-		JScrollPane scrollPane_2 = new JScrollPane();
-		tabbedPane_1.addTab("Albumes", null, scrollPane_2, null);
-		
-		table_2 = new JTable();
-		table_2.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Imagen", "Album", "Nombre Artista",
-				"Genero", "Duracion", "Precio", "Calidad", "Tamaño(MB)" }));
-		@SuppressWarnings("unused")
-		
-		
-		
-		
-		
-		DefaultTableModel model_3 = (DefaultTableModel) table_2.getModel();
-		scrollPane_2.setViewportView(table_2);
-		
 		JScrollPane scrollPane_3 = new JScrollPane();
 		tabbedPane_1.addTab("Canciones", null, scrollPane_3, null);
 		
 		table_3 = new JTable();
-		table_3.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Imagen", "Nombre Artista", "Album",
-				"Cancion", "Duracion", "Precio", "Calidad", "Tamaño(MB)" }));
-		@SuppressWarnings("unused")
+		table_3.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Cancion", "copias", "Precio"}));
 		DefaultTableModel model_4 = (DefaultTableModel) table_3.getModel();
+		try {
+            String query = "SELECT * FROM cancionesv ;";
+            PreparedStatement sentenciaP = database.open().prepareStatement(query);
+            ResultSet resultado = sentenciaP.executeQuery();
+
+            while (resultado.next()) {
+            	
+            	model_4.addRow(new Object[] {resultado.getString("cancion"), resultado.getString("copias"),
+						resultado.getString("precio"), resultado.getString("nombreC")});
+            }
+            
+            sentenciaP.close();
+            database.close();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
 		scrollPane_3.setViewportView(table_3);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
