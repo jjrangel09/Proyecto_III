@@ -1,5 +1,8 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,7 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 public class VentanaUsu extends JFrame {
-
+	static private DBManager database = new DBManager();
 	private JPanel contentPane;
 	private JTable table;
 	private JTable table_1;
@@ -83,6 +86,22 @@ public class VentanaUsu extends JFrame {
 		table = new JTable();
 		table.setModel(new DefaultTableModel(new Object [][] {},
 				new String[] {"Imagen", "Nombre Artista", "Album", "Cancion", "Genero", "Duracion", "Precio", "Calidad", "Tamaño(MB)"}));
+		DefaultTableModel model_1 = (DefaultTableModel) table.getModel();
+		try {
+			String query = "SELECT * FROM usuarios;";
+			PreparedStatement sentenciaP = database.open().prepareStatement(query);
+			ResultSet resultado = sentenciaP.executeQuery();
+
+			while (resultado.next()) {
+				model_1.addRow(new Object[] { resultado.getString("nombreU"), resultado.getString("apelU"),
+						resultado.getString("usuario"), resultado.getString("doc"), resultado.getString("edad"), resultado.getString("tel") });
+			}
+
+			sentenciaP.close();
+			database.close();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
 		scrollPane.setViewportView(table);
 		panel.setLayout(gl_panel);
 		
